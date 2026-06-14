@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Checker</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🔐 Password Strength Checker</h2>
+
+    <form method="POST">
+        <input type="password" name="password" placeholder="Enter password" required>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if result %}
+        <div class="result">{{ result }}</div>
+    {% endif %}
+
+    {% if feedback %}
+        <h4>Suggestions:</h4>
+        <ul>
+            {% for f in feedback %}
+                <li>{{ f }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if suggestion %}
+        <h4>Suggested Strong Password:</h4>
+        <p class="suggestion">{{ suggestion }}</p>
+    {% endif %}
+
+    <hr>
+
+    <h3>Signup</h3>
+    <form action="/signup" method="post">
+        <input name="username" placeholder="Username" required>
+        <input name="password" type="password" placeholder="Password" required>
+        <button type="submit">Sign Up</button>
+    </form>
+
+</div>
+
+</body>
+</html>
